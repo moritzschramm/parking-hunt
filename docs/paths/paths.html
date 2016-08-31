@@ -22,6 +22,7 @@
              <li><a href="#register">Register</a></li>
              <hr>
              <li><a href="#spot-get">Get Spot</a></li>
+             <li><a href="#spots">Get all Spots</a></li>
              <li><a href="#spot-create">Create Spot</a></li>
              <li><a href="#spot-edit">Edit Spot</a></li>
              <li><a href="#spot-delete">Delete Spot</a></li>
@@ -191,6 +192,60 @@ GET request
   <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
   <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
   <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div id="spots" class="tile">
+
+      <h2>
+        <a href="../index.html#spots" class="btn btn-default"> &lt; back</a>
+        Get all Spots
+        <small>POST /api/v1/spots</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 200</small></h4>
+
+<pre><code>{
+  <span class="key">"spots"</span>: [
+    {
+      <span class="key">"_id"</span>: <span class="val">"<i>your_spotID</i>"</span>,
+      <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+      <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+      <span class="key">"place"</span>: <span class="val">"<i>city/place</i>"</span>,
+      <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+      <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+      <span class="key">"amount"</span>: <span class="val-num"><i>amount</i></span>,
+      <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+      <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
+      <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+      <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+    },
+    ...
+  ]
 }
 </code></pre>
 
@@ -488,13 +543,33 @@ GET request
   <span class="key">"Credentials"</span>: {
     <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
     <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
-  }
+  },
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>
 }
 </code></pre>
 
-            <h4>Response <small>StatusCode: 204</small></h4>
+            <h4>Response <small>StatusCode: 200</small></h4>
 
-<pre><code>{}</code></pre>
+<pre><code>{
+  <span class="key">"spots"</span>: [
+    {
+      <span class="key">"_id"</span>: <span class="val">"<i>searchID</i>"</span>,
+      <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
+      <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+      <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+      <span class="key">"place"</span>: <span class="val">"<i>place/city</i>"</span>,
+      <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+      <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+      <span class="key">"place"</span>: <span class="val">"<i>place/city</i>"</span>,
+      <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+      <span class="key">"searchAmount"</span>: <span class="val-num"><i>searchAmount</i></span>,
+      <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+      <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+    },
+    ...
+  ]
+}</code></pre>
 
         </div>
 
@@ -525,13 +600,31 @@ GET request
     <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
   }
   <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
-  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"place"</span>: <span class="val">"<i>place/city</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+  <span class="key">"place"</span>: <span class="val"><i>place/city</i></span>,
+  <span class="key">"type"</span>: <span class="val"><i>type</i></span>
 }
 </code></pre>
 
-            <h4>Response <small>StatusCode: 204</small></h4>
+            <h4>Response <small>StatusCode: 200/201</small></h4>
 
-<pre><code>{}</code></pre>
+<pre><code>{
+  <span class="key">"_id"</span>: <span class="val">"<i>searchID</i>"</span>,
+  <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"place"</span>: <span class="val">"<i>place/city</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+  <span class="key">"place"</span>: <span class="val">"<i>place/city</i>"</span>,
+  <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+  <span class="key">"searchAmount"</span>: <span class="val-num"><i>searchAmount</i></span>,
+  <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+  <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+}</code></pre>
 
         </div>
 

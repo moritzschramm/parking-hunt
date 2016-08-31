@@ -20,7 +20,7 @@ html, * {
   padding: 10px;
 }
 body {
-      position: relative;
+  position: relative;
 }
 .nav-tile {
   border-radius: 2px;
@@ -30,7 +30,10 @@ body {
   padding: 10px;
 }
 ul.nav-pills {
-    position: fixed;
+  position: fixed;
+  max-height: 95%;
+  margin-bottom: 10px;
+  overflow-y: auto;
 }
 ul.nav-pills > li {
   margin: 0;
@@ -41,9 +44,11 @@ ul.nav-pills > li,  ul.nav-pills > li.active, ul.nav-pills > li > a {
 ul.nav-pills > li > a {
   color: #444;
   border-left: 4px solid transparent;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 ul.nav-pills > li.active > a {
-  background-color: #fff;
+  background-color: #f9f9f9;
   border-left: 4px solid #03a9f4;
   border-radius: 0px;
   color: #000;
