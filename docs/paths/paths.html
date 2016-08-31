@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="The Documentation of the ParkingHunt Rest API Version 1">
+  	<meta name="HandheldFriendly" content="true">
+  	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>PH Rest API Documentation V1 - Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="100">
+
+    <div class="container">
+       <div class="row">
+         <nav class="col-md-3" id="myScrollspy">
+           <ul class="nav nav-pills nav-stacked nav-tile">
+             <div><a href="../index.html" class="btn btn-default btn-block"> &lt; back</a></div>
+             <hr>
+             <li><a href="#test">Test Call</a></li>
+             <li><a href="#login">Login</a></li>
+             <li><a href="#register">Register</a></li>
+             <hr>
+             <li><a href="#spot-get">Get Spot</a></li>
+             <li><a href="#spot-create">Create Spot</a></li>
+             <li><a href="#spot-edit">Edit Spot</a></li>
+             <li><a href="#spot-delete">Delete Spot</a></li>
+             <hr>
+             <li><a href="#acc-get">Get Account</a></li>
+             <li><a href="#acc-edit">Edit Account</a></li>
+             <li><a href="#acc-delete">Delete Account</a></li>
+             <hr>
+             <li><a href="#search-geo">Search</a></li>
+             <li><a href="#search-add">Add Search</a></li>
+           </ul>
+         </nav>
+         <div class="col-md-9">
+
+    <div id="test" class="tile">
+
+      <h2>
+        <a href="../index.html#test" class="btn btn-default"> &lt; back</a>
+        Test Call
+        <small>GET /api/v1</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>
+GET request
+
+</code></pre>
+
+            <h4>Response</h4>
+
+<pre><code>{
+  <span class="key">"APIversion"</span>: <span class="val">"<i>v1</i>"</span>
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="login" class="tile">
+
+      <h2>
+        <a href="../index.html#login" class="btn btn-default"> &lt; back</a>
+        Login
+        <small>POST /api/v1/login</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"email"</span>: <span class="val">"<i>your_email</i>"</span>,
+  <span class="key">"password"</span>: <span class="val">"<i>your_password</i>"</span>
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 200</small></h4>
+
+<pre><code>{
+  <span class="key">"user"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>your_accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>your_ApiKey</i>"</span>,
+    <span class="key">"firstname"</span>: <span class="val">"<i>your_firstname</i>"</span>,
+    <span class="key">"lastname"</span>: <span class="val">"<i>your_lastname</i>"</span>
+  }
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="register" class="tile">
+
+      <h2>
+        <a href="../index.html#register" class="btn btn-default"> &lt; back</a>
+        Register
+        <small>POST /api/v1/register</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"email"</span>: <span class="val">"<i>your_email</i>"</span>,
+  <span class="key">"password"</span>: <span class="val">"<i>your_password</i>"</span>,
+  <span class="key">"firstname"</span>: <span class="val">"<i>your_firstname</i>"</span>,
+  <span class="key">"lastname"</span>: <span class="val">"<i>your_lastname</i>"</span>
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 200</small></h4>
+
+<pre><code>{
+  <span class="key">"user"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>your_accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>your_ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div id="spot-get" class="tile">
+
+      <h2>
+        <a href="../index.html#spot-get" class="btn btn-default"> &lt; back</a>
+        Get Spot
+        <small>POST /api/v1/spot/{spotID}</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 200</small></h4>
+
+<pre><code>{
+  <span class="key">"_id"</span>: <span class="val">"<i>your_spotID</i>"</span>,
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"place"</span>: <span class="val">"<i>city/place</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+  <span class="key">"amount"</span>: <span class="val-num"><i>amount</i></span>,
+  <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+  <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
+  <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+  <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="spot-create" class="tile">
+
+      <h2>
+        <a href="../index.html#spot-create" class="btn btn-default"> &lt; back</a>
+        Create Spot
+        <small>POST /api/v1/spot</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  },
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"amount"</span>: <span class="val-num"><i>amount</i></span>,
+  <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+  <span class="key">"place"</span>: <span class="val">"<i>city/place</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 201</small></h4>
+
+<pre><code>{
+  <span class="key">"_id"</span>: <span class="val">"<i>your_spotID</i>"</span>,
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"amount"</span>: <span class="val-num"><i>amount</i></span>,
+  <span class="key">"place"</span>: <span class="val">"<i>city/place</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+  <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+  <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
+  <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+  <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="spot-edit" class="tile">
+
+      <h2>
+        <a href="../index.html#spot-edit" class="btn btn-default"> &lt; back</a>
+        Edit Spot
+        <small>PUT /api/v1/spot/{spotID}</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  },
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"amount"</span>: <span class="val-num"><i>amount</i></span>,
+  <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+  <span class="key">"place"</span>: <span class="val">"<i>city/place</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 200</small></h4>
+
+<pre><code>{
+  <span class="key">"_id"</span>: <span class="val">"<i>your_spotID</i>"</span>,
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>,
+  <span class="key">"amount"</span>: <span class="val-num"><i>amount</i></span>,
+  <span class="key">"type"</span>: <span class="val">"<i>type</i>"</span>,
+  <span class="key">"place"</span>: <span class="val">"<i>city/place</i>"</span>,
+  <span class="key">"street"</span>: <span class="val">"<i>street</i>"</span>,
+  <span class="key">"street_number"</span>: <span class="val">"<i>street_number</i>"</span>,
+  <span class="key">"_user_id"</span>: <span class="val">"<i>your_user_id</i>"</span>,
+  <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+  <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="spot-delete" class="tile">
+
+      <h2>
+        <a href="../index.html#spot-delete" class="btn btn-default"> &lt; back</a>
+        Delete Spot
+        <small>DELETE /api/v1/spot/{spotID}</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 204</small></h4>
+
+<pre><code>{}
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="acc-get" class="tile">
+
+      <h2>
+        <a href="../index.html#acc-get" class="btn btn-default"> &lt; back</a>
+        Get Account
+        <small>POST /api/v1/acc/{accID}</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 200</small></h4>
+
+<pre><code>{
+  <span class="key">"_id"</span>: <span class="val">"<i>your_accID</i>"</span>,
+  <span class="key">"email"</span>: <span class="val"><i>email</i></span>,
+  <span class="key">"firstname"</span>: <span class="val">"<i>firstname</i>"</span>,
+  <span class="key">"lastname"</span>: <span class="val">"<i>lastname</i>"</span>,
+  <span class="key">"roles"</span>: [
+    <span class="val">"<i>user roles</i>"</span>,
+    ...
+  ],
+  <span class="key">"updatedAt"</span>: <span class="val-date">"<i>Date</i>"</span>,
+  <span class="key">"createdAt"</span>: <span class="val-date">"<i>Date</i>"</span>
+  }
+</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div id="acc-edit" class="tile">
+
+      <h2>
+        <a href="../index.html#acc-edit" class="btn btn-default"> &lt; back</a>
+        Edit Account
+        <small>PUT /api/v1/acc/{accID}</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  },
+  <span class="key">"email"</span>: <span class="val"><i>email</i></span>,
+  <span class="key">"password"</span>: <span class="val"><i>password</i></span>
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 204</small></h4>
+
+<pre><code>{}</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div id="acc-delete" class="tile">
+
+      <h2>
+        <a href="../index.html#acc-delete" class="btn btn-default"> &lt; back</a>
+        Delete Account
+        <small>DELETE /api/v1/acc/{accID}</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 204</small></h4>
+
+<pre><code>{}</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="search-geo" class="tile">
+
+      <h2>
+        <a href="../index.html#search-geo" class="btn btn-default"> &lt; back</a>
+        Search
+        <small>POST /api/v1/search/geo</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 204</small></h4>
+
+<pre><code>{}</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="search-add" class="tile">
+
+      <h2>
+        <a href="../index.html#search-add" class="btn btn-default"> &lt; back</a>
+        Add Search
+        <small>POST /api/v1/search/add</small>
+      </h2>
+      <hr>
+
+
+      <div class="row">
+
+        <div class="col-md-5">
+
+            <h4>Request</h4>
+
+<pre><code>{
+  <span class="key">"Credentials"</span>: {
+    <span class="key">"accID"</span>: <span class="val">"<i>accID</i>"</span>,
+    <span class="key">"ApiKey"</span>: <span class="val">"<i>ApiKey</i>"</span>
+  }
+  <span class="key">"lat"</span>: <span class="val-num"><i>lat</i></span>,
+  <span class="key">"lng"</span>: <span class="val-num"><i>lng</i></span>
+}
+</code></pre>
+
+            <h4>Response <small>StatusCode: 204</small></h4>
+
+<pre><code>{}</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+</div>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

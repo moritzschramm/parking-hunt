@@ -1,0 +1,17 @@
+{
+  "name": "parking-hunt",
+  "version": "1.0.0",
+  "description": "REST API for parking-hunt",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moritz Schramm",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.9"
+  }
+}
