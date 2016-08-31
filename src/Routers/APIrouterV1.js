@@ -39,7 +39,7 @@ router.use(auth);
 
   // SPOT
 router.param("spotID", function(req, res, next, id) {
-  Spot.findOne({_id: req.params.spotID, deletedAt: null}, { $except: "__v" }, function(err, spot) {
+  Spot.findOne({_id: req.params.spotID, deletedAt: null}, { __v: 0 }, function(err, spot) {
 
     if(err) return next(err);
 
@@ -129,7 +129,7 @@ router.delete("/spot/:spotID", function(req, res, next) {
 
 router.post("/spots", function(req, res, next) {
 
-  Spot.find({_user_id: req.user._id, deletedAt: null}, { $except: "__v" }, function(err, spots) {
+  Spot.find({_user_id: req.user._id, deletedAt: null}, { __v: 0 }, function(err, spots) {
 
     if(err) next(err);
 
