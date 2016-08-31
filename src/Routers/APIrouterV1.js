@@ -86,7 +86,7 @@ router.param("accID", function(req, res, next, id) {
   */
 router.post("/spot/:spotID", function(req, res, next) {
 
-  res.json(req.spot);                                     //TODO (for all spots) do not send __v back
+  res.json(req.spot);
 })
 
 router.post("/spot", function(req, res, next) {
@@ -214,12 +214,17 @@ router.post("/search/geo", function(req, res, next) {
        {lat: { $gt: latBorderLeft, $lt: latBorderRight}},
        {lng: { $gt: lngBorderLeft, $lt: lngBorderRight}}
     ]
-   },
+  },
+  {
+    __v: 0
+  },
   function(err, spots) {
 
     if(err) next(err);
 
-    res.json(spots);
+    res.json({
+      "spots": spots
+    });
   });
 });
 
