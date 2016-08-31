@@ -129,7 +129,7 @@ router.delete("/spot/:spotID", function(req, res, next) {
 
 router.post("/spots", function(req, res, next) {
 
-  Spot.find({_user_id: req.user._id, deletedAt: null}, function(err, spots) {
+  Spot.find({_user_id: req.user._id, deletedAt: null}, { $except: "__v" }, function(err, spots) {
 
     if(err) next(err);
 
@@ -140,7 +140,9 @@ router.post("/spots", function(req, res, next) {
       return next(err);
     }
 
-    res.json(spots);
+    res.json({
+      "spots": spots
+    });
   })
 });
 
