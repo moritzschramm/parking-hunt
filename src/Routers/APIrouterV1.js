@@ -165,35 +165,56 @@ router.post("/acc/:accID", function(req, res, next) {
 
 router.put("/acc/:accID", function(req, res, next) {
 
+  var email = req.body.email;
   var old_password = req.body.old_password;
   var accID = req.body.Credentials.accID;
 
-  User.findOne({ _id: accID, deletedAt: null }, function(err, user) {
+  User.findOne({ email: email, deletedAt: null }, function(err, user) {
 
-    if(err) next(err);
+    var emailExistsAlready = true;
 
     if(!user) {
-
-      var err = new Error('Login Error: account does not exists');
-      err.status = 400;
-      return next(err);
+      emailExistsAlready = false;
+    } else if((user._id + "") == (accID + "")) {
+      emailExistsAlready = false;
     }
 
-    if(bcrypt.compareSync(old_password, user.password)) {
+    if(emailExistsAlready) {
 
-      req.user.change(req.body, function(err, user) {
-
-        if(err) next(err);
-
-        res.status(204);
-        res.json({});
-      });
+      var err = new Error('Email Error: email already exists');
+      err.status = 400;
+      return next(err);
 
     } else {
 
-      var err = new Error('Login Error: wrong password');
-      err.status = 400;
-      return next(err);
+      User.findOne({ _id: accID, deletedAt: null }, function(err, user) {
+
+        if(err) next(err);
+
+        if(!user) {
+
+          var err = new Error('Login Error: account does not exists');
+          err.status = 403;
+          return next(err);
+        }
+
+        if(bcrypt.compareSync(old_password, user.password)) {
+
+          req.user.change(req.body, function(err, user) {
+
+            if(err) next(err);
+
+            res.status(204);
+            res.json({});
+          });
+
+        } else {
+
+          var err = new Error('Login Error: wrong password');
+          err.status = 403;
+          return next(err);
+        }
+      });
     }
   });
 });
@@ -210,7 +231,7 @@ router.delete("/acc/:accID", function(req, res, next) {
     if(!user) {
 
       var err = new Error('Login Error: account does not exists');
-      err.status = 400;
+      err.status = 403;
       return next(err);
     }
 
@@ -227,7 +248,7 @@ router.delete("/acc/:accID", function(req, res, next) {
     } else {
 
       var err = new Error('Login Error: wrong password');
-      err.status = 400;
+      err.status = 403;
       return next(err);
     }
   });
