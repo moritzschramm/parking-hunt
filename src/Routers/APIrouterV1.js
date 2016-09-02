@@ -3,6 +3,7 @@
 var express = require('express');
 var router  = express.Router();
 var auth    = require('./Auth.js');
+var bcrypt  = require('bcrypt-nodejs');
 
 var Spot    = require('../models/Spot.js').Spot;
 var User    = require('../models/User.js').User;
@@ -199,7 +200,7 @@ router.put("/acc/:accID", function(req, res, next) {
 
 router.delete("/acc/:accID", function(req, res, next) {
 
-  var old_password = req.body.old_password;
+  var password = req.body.password;
   var accID = req.body.Credentials.accID;
 
   User.findOne({ _id: accID, deletedAt: null }, function(err, user) {
@@ -213,7 +214,7 @@ router.delete("/acc/:accID", function(req, res, next) {
       return next(err);
     }
 
-    if(bcrypt.compareSync(old_password, user.password)) {
+    if(bcrypt.compareSync(password, user.password)) {
 
       req.user.delete(function(err) {
 
