@@ -94,7 +94,7 @@ router.post("/spot", function(req, res, next) {
   req.body._user_id = req.user._id;
 
   var spot = new Spot(req.body);
-  spot.save(function(err, spot) {
+  spot.save(function(err, spot) {             //TODO do not return __v
 
     if(err) return next(err);
 
@@ -107,7 +107,7 @@ router.put("/spot/:spotID", function(req, res, next) {
 
   checkOwner(req, next);
 
-  req.spot.update(req.body, function(err, spot) {
+  req.spot.update(req.body, function(err, spot) {             //TODO do not return __v
 
     if(err) return next(err);
 
@@ -164,23 +164,71 @@ router.post("/acc/:accID", function(req, res, next) {
 
 router.put("/acc/:accID", function(req, res, next) {
 
-  req.user.change(req.body, function(err, user) {
+  var old_password = req.body.old_password;
+  var accID = req.body.Credentials.accID;
+
+  User.findOne({ _id: accID, deletedAt: null }, function(err, user) {
 
     if(err) next(err);
 
-    res.status(204);
-    res.json({});
+    if(!user) {
+
+      var err = new Error('Login Error: account does not exists');
+      err.status = 400;
+      return next(err);
+    }
+
+    if(bcrypt.compareSync(old_password, user.password)) {
+
+      req.user.change(req.body, function(err, user) {
+
+        if(err) next(err);
+
+        res.status(204);
+        res.json({});
+      });
+
+    } else {
+
+      var err = new Error('Login Error: wrong password');
+      err.status = 400;
+      return next(err);
+    }
   });
 });
 
 router.delete("/acc/:accID", function(req, res, next) {
 
-  req.user.delete(function(err) {
+  var old_password = req.body.old_password;
+  var accID = req.body.Credentials.accID;
+
+  User.findOne({ _id: accID, deletedAt: null }, function(err, user) {
 
     if(err) next(err);
 
-    res.status(204);
-    res.json({});
+    if(!user) {
+
+      var err = new Error('Login Error: account does not exists');
+      err.status = 400;
+      return next(err);
+    }
+
+    if(bcrypt.compareSync(old_password, user.password)) {
+
+      req.user.delete(function(err) {
+
+        if(err) next(err);
+
+        res.status(204);
+        res.json({});
+      });
+
+    } else {
+
+      var err = new Error('Login Error: wrong password');
+      err.status = 400;
+      return next(err);
+    }
   });
 });
 
