@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="5dp"
+        android:onClick="debug">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/profile"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#fff"
+            android:layout_margin="8dp"
+            android:elevation="3dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_account_box_black_48dp"
+                android:layout_margin="10dp"
+                android:alpha="0.54"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pnl_change_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_margin="8dp"
+            android:elevation="3dp"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:text="E-mail ändern"/>
+
+
+            <EditText
+                android:id="@+id/new_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Neue E-mail Adresse"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/current_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Aktuelles Passwort"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"/>
+
+            <TextView
+                android:id="@+id/err_email"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textColor="#f44336"
+                android:background="#ffcdd2"/>
+
+            <TextView
+                android:id="@+id/msg_email"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textColor="#1b5e20"
+                android:background="#dcedc8"/>
+
+            <Button
+                android:onClick="clickChangeEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail ändern"
+                android:padding="8dp"
+                android:layout_gravity="right"
+                android:textColor="@color/colorAccent"
+                android:background="?android:selectableItemBackground"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/pnl_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_margin="8dp"
+            android:elevation="3dp"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:text="Passwort ändern"/>
+
+            <EditText
+                android:id="@+id/old_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Altes Passwort"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"/>
+
+            <EditText
+                android:id="@+id/new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Neues Passwort"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"/>
+
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Neues Passwort bestätigen"
+                android:fontFamily="sans-serif"
+                android:inputType="textPassword"/>
+
+            <TextView
+                android:id="@+id/err_password"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textColor="#f44336"
+                android:background="#ffcdd2"/>
+
+            <TextView
+                android:id="@+id/msg_password"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textColor="#1b5e20"
+                android:background="#dcedc8"/>
+
+            <Button
+                android:onClick="clickChangePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Passwort ändern"
+                android:padding="8dp"
+                android:layout_gravity="right"
+                android:textColor="@color/colorAccent"
+                android:background="?android:selectableItemBackground"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

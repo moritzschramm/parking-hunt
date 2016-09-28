@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "901250646374",
+    "project_id": "parking-hunt"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901250646374:android:c45764e1f2b3fe63",
+        "android_client_info": {
+          "package_name": "com.moritzschramm.parkinghunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901250646374-pg087f9of09oj1eu8eeib87ci54gjd8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moritzschramm.parkinghunt",
+            "certificate_hash": "2A6F7A4F11B018C6F65C6213E4B5F4E2D6D58C9D"
+          }
+        },
+        {
+          "client_id": "901250646374-na0shnita0aad4f1647o5dqcghkm9tg3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-pFS2Us1jqgDGFRCtSWZRZ7v1IQpkDXE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
