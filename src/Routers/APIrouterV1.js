@@ -5,9 +5,9 @@ var router  = express.Router();
 var auth    = require('./Auth.js');
 var bcrypt  = require('bcrypt-nodejs');
 
-var Spot    = require('../models/Spot.js').Spot;
-var User    = require('../models/User.js').User;
-var Search  = require('../models/Search.js').Search;
+var Spot    = require('../Models/Spot.js').Spot;
+var User    = require('../Models/User.js').User;
+var Search  = require('../Models/Search.js').Search;
 
 
 /**   API Router (v1): handles all requests for the 1st version of the API
@@ -25,7 +25,7 @@ var Search  = require('../models/Search.js').Search;
   *   TEST API CALL: output API version
   */
 router.get("/", function(req, res, next) {
-  res.json({APIversion:"v1"});
+  res.json({APIversion: "v1"});
 });
 
 
@@ -75,7 +75,7 @@ router.param("accID", function(req, res, next, id) {
       return next(err);
     }
 
-    req.spot = user;
+    req.user = user;
     return next();
   });
 });

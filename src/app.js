@@ -8,7 +8,6 @@ var app           = express();
 
 var jsonParser    = require('body-parser').json;
 
-var router        = require('./Routers/router.js');
 var APIrouterV1   = require('./Routers/APIrouterV1.js');
 
 /**
@@ -48,7 +47,6 @@ db.once("open", function() {
   */
 
 app.use("/api/v1/", APIrouterV1);
-app.use(router);
 
 
 /**
@@ -71,5 +69,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(port, function() {
-  console.log("Server running on http://localhost:3000");
+  console.log("Server running on port " + port);
 });

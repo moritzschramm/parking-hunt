@@ -10,7 +10,7 @@ var UserSchema = new Schema({
   email: String,
   firstname: String,
   lastname: String,
-  credits: Number,                  //experimental
+  credits: Number,
   password: String,
   ApiKey: String,
   roles: {type: [], default: ["user"]},

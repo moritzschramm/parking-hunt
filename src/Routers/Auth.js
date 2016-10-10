@@ -3,7 +3,7 @@
 var express     = require('express');
 var authRouter  = express.Router();
 
-var User        = require('../models/User.js').User;
+var User        = require('../Models/User.js').User;
 var bcrypt      = require('bcrypt-nodejs');
 
 var DEBUG_MODE  = false;             //  SET DEBUG MODE, WILL SWITCH THE AUTHENTICATION OFF
